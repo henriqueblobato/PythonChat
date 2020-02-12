@@ -11,17 +11,17 @@ while True:
     ready_to_read,ready_to_write,in_error = select.select(socket_list,[],[],0)
     for sock in ready_to_read:
         if sock == server_socket:
-            connect, addr = server_socket.accept()
-            socket_list.append(connect)
-            connect.send("You are connected from:" + str(addr))
+            client_connection, addr = server_socket.accept()
+            socket_list.append(client_connection)
+            client_connection.send("You are connected from:" + str(addr))
         else:
             try:
                 data = sock.recv(2048)
                 print data
                 if data.startswith("#"):
-                    users[data[1:].lower()] = connect
+                    users[data[1:].lower()] = client_connection
                     print "User " + data[1:] +" added."
-                    connect.send("Your user detail saved as : "+str(data[1:]))
+                    client_connection.send("Your user detail saved as : "+str(data[1:]))
                 elif data.startswith("@"):
                     for user in users:
                         users[user].send(data[data.index('@')+1:])
