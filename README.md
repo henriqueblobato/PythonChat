@@ -12,5 +12,5 @@ Inicialize seus clientes:
 Ao receber a mensagem de confirmação, insira seu nome de usuário com o prefixo '#':
 - Enter your user name(prefix with #): #ik
 
-Escreva a mensagem a ser distribuída para broadcast:
-- Message: Olá pessoal
+Escreva a mensagem a ser distribuída para broadcast com o prefixo '@':
+- Message: @Olá pessoal
